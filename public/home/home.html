@@ -1,0 +1,80 @@
+<div class="wrapper">
+    <div id="header" class="blog-masthead" style="margin-bottom: 20px;">
+        <div class="container">
+            <nav class="blog-nav text-center">
+                <a class="blog-nav-item" href="#"><img src="assets/img/logo.png" class="logo"></a>
+            </nav>
+        </div>
+    </div>
+    <div id="content" class="container">
+        <div class="center-block custom-block" style="margin-top: 30px;">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <div class="icon-wrapper" style="margin-bottom:20px;">
+                        <i class="fa fa-car custom-icon">
+                            <span class="fix-editor">&nbsp;</span>
+                        </i>
+                    </div>
+                </div>
+            </div>
+            <form name="searchForm" method="post" ng-submit="searchForm.$valid && homeCtrl.beginSearch()" novalidate >
+                <div class="row">
+                    <div class="col-xs-12 form-group">
+                        <div class="">
+                            <input type="text" class="form-control" placeholder="From" g-places-autocomplete ng-model="homeCtrl.from" name="fromInput" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 form-group">
+                        <div class="">
+                            <input type="text" class="form-control" placeholder="Destination" ng-model="homeCtrl.selectedDestination" uib-typeahead="mall as mall.Development for mall in homeCtrl.listOfMalls | filter:$viewValue | limitTo:8" name="destinationInput" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 form-group">
+                        <div class="">
+                            <center><b>Departure time -</b> {{homeCtrl.hour}}:{{homeCtrl.minute}}</center>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 form-group">
+                        <div class="">
+                            <select class="form-control" ng-model="homeCtrl.hour" ng-options="time for time in homeCtrl.listOfHours" ng-click="homeCtrl.customTime = true" name="hourInput" required>
+                                <option value="" disabled selected>Hour</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 form-group">
+                        <div class="">
+                            <select class="form-control" ng-model="homeCtrl.minute" ng-options="time for time in homeCtrl.listOfMinutes" ng-click="homeCtrl.customTime = true" name="minuteInput" required>
+                                <option value="" disabled selected>Minute</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 form-group text-center">
+                        <div ng-show="searchForm.$invalid && searchForm.$submitted" class="errorColor">
+                            Please fill in all the fields
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 form-group text-center">
+                        <button class="btn btn-success btn-block" id="search" type="submit"> SEARCH </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="push"></div>
+</div>
+<!-- /container -->
+<footer id="footer" class="footer">
+    <div class="container">
+        <p>© 2016 ParkingEZY, Inc.</p>
+    </div>
+</footer>
